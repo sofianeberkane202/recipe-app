@@ -1,0 +1,9 @@
+/* @import url("../style.css"); */
+
+.pd-inline-16 {
+  padding-inline: 16px;
+}
+
+.bd-y-end {
+  border-block-end: 1px solid var(--outline);
+}

@@ -55,9 +55,79 @@
     <script type="module" src="./assets/js/controlers.js"></script>
   </head>
 
-  <body>
+  <body class="flex flex-column">
     <!-- 
       - #HEADER
     -->
+    <header
+      class="header flex flex-between flex-center-y pd-inline-16 bd-y-end"
+      style="--gap: 1.2rem"
+    >
+      <a href="/" class="logo">
+        <img
+          src="./assets/images/logo-light.svg"
+          class="logo-light"
+          width="150"
+          alt="Cook.io"
+        />
+        <img
+          src="./assets/images/logo-dark.svg"
+          class="logo-dark"
+          width="150"
+          alt="Cook.io"
+        />
+      </a>
+
+      <nav class="navbar flex-1 flex flex-center" style="height: 100%">
+        <ul class="navbar-list flex" style="--gap: 2rem">
+          <li class="has-state">
+            <a
+              href="/"
+              class="title-small flex flex-center"
+              aria-selected="true"
+              >Home</a
+            >
+          </li>
+
+          <li class="has-state">
+            <a
+              href="/"
+              class="title-small flex flex-center"
+              aria-selected="false"
+              >Recipes</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <button
+        class="icon-btn theme-switch has-state flex flex-column"
+        style="--gap: 0"
+        aria-label="Toggle light and dark theme"
+        switch-theme-btn
+      >
+        <span class="material-symbols-outlined light-icon" aria-hidden="true"
+          >light_mode</span
+        >
+        <span class="material-symbols-outlined dark-icon" aria-hidden="true"
+          >dark_mode</span
+        >
+      </button>
+
+      <a
+        href="./saved-recipes.html"
+        class="btn btn-primary has-icon flex flex-center"
+        style="--gap: 1rem"
+        data-save-recipes
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-size: 1.8rem"
+          aria-hidden="true"
+          >book</span
+        >
+        <span class="span label-medium">Saved Recipes</span>
+      </a>
+    </header>
   </body>
 </html>

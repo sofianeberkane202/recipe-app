@@ -1,0 +1,16 @@
+.has-state {
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-short);
+}
+
+.has-state::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.has-state:where(:hover, :focus-visible):not(:active) {
+  background-color: var(--alpha-10);
+}

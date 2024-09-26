@@ -38,3 +38,7 @@
 .align-self-start {
   align-self: flex-start;
 }
+
+.flex-1 {
+  flex: 1;
+}

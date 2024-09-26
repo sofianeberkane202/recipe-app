@@ -30,3 +30,33 @@
 @import url("./utilities.css");
 
 /* ----------------------------------------- */
+
+/* 
+  - Header
+*/
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background-color: var(--background);
+  width: 100%;
+  height: var(--header-height);
+}
+
+.navbar li {
+  padding-inline: 24px;
+  height: var(--header-height);
+}
+
+.navbar li > a {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  border-block-end: 3px solid transparent;
+}
+
+.navbar li > a[aria-selected="true"] {
+  border-block-end-color: var(--primary);
+}

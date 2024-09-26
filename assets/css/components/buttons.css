@@ -1,0 +1,25 @@
+.icon-btn {
+  background-color: var(--primary-container);
+  padding: 8px;
+  border-radius: var(--radius-circle);
+}
+
+.btn {
+  padding-inline: 24px;
+  padding-block: 10px;
+  border-radius: var(--radius-4);
+  transition: var(--transition-short);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:where(:hover, :focus-visible):not(:active) {
+  background-color: var(--primary-hover);
+}
+
+.btn.has-icon {
+  padding-inline-start: 16px;
+}

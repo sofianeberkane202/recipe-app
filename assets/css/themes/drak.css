@@ -18,3 +18,7 @@
   --alpha-10: var(--dark-alpha-10);
   --alpha-20: var(--dark-alpha-20);
 }
+
+[data-theme="dark"] :where(.logo-light, .dark-icon, [data-save-recipes]) {
+  display: none;
+}
