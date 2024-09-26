@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,6 +52,7 @@
     <!-- 
       - custome js
     -->
+    <script src="./assets/js/global.js" defer></script>
     <script type="module" src="./assets/js/controlers.js"></script>
   </head>
 
@@ -104,6 +105,7 @@
         class="icon-btn theme-switch has-state flex flex-column"
         style="--gap: 0"
         aria-label="Toggle light and dark theme"
+        aria-pressed="false"
         switch-theme-btn
       >
         <span class="material-symbols-outlined light-icon" aria-hidden="true"
@@ -129,5 +131,62 @@
         <span class="span label-medium">Saved Recipes</span>
       </a>
     </header>
+
+    <!-- 
+      - Mobile NAV
+    -->
+    <section class="mobile-nav">
+      <ul class="nav-list">
+        <li class="list-item">
+          <a
+            href="./recipes.html"
+            class="nav-link flex flex-column"
+            style="--gap: 0.5rem"
+            aria-selected="false"
+          >
+            <span
+              class="material-symbols-outlined pd-inline-18 pd-block-6 radius-pill"
+              aria-hidden="true"
+              >lunch_dining</span
+            >
+            <span class="label-medium">Recipes</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a
+            href="./recipes.html"
+            class="nav-link flex flex-column"
+            style="--gap: 0.5rem"
+            aria-selected="true"
+          >
+            <span
+              class="material-symbols-outlined pd-inline-18 pd-block-6 radius-pill"
+              aria-hidden="true"
+              >home</span
+            >
+
+            <span class="label-medium">Home</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a
+            href="./recipes.html"
+            class="nav-link flex flex-column"
+            style="--gap: 0.5rem"
+            aria-selected="false"
+          >
+            <span
+              class="material-symbols-outlined pd-inline-18 pd-block-6 radius-pill"
+              aria-hidden="true"
+              >book</span
+            >
+
+            <span class="label-medium">Saved</span>
+          </a>
+        </li>
+      </ul>
+    </section>
   </body>
 </html>

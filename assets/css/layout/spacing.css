@@ -1,9 +1,32 @@
 /* @import url("../style.css"); */
 
+.pd-inline-24 {
+  padding-inline: 24px;
+}
+.pd-inline-18 {
+  padding-inline: 18px;
+}
 .pd-inline-16 {
   padding-inline: 16px;
+}
+.pd-block-4 {
+  padding-block: 4px;
+}
+.pd-block-6 {
+  padding-block: 6px;
+}
+.pd-block-8 {
+  padding-block: 8px;
 }
 
 .bd-y-end {
   border-block-end: 1px solid var(--outline);
+}
+
+.radius-pill {
+  border-radius: var(--radius-pill);
+}
+
+.radius-circle {
+  border-radius: var(--radius-circle);
 }
