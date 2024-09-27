@@ -241,3 +241,24 @@ a[data-show-more-link]:where(:hover, :focus-visible) {
   width: 100%;
   margin-block-end: 12px;
 }
+
+/* 
+  - Footer
+*/
+
+.footer {
+  padding: 16px;
+  border-block-start: 1px solid var(--outline);
+}
+
+.copyright {
+  opacity: 0.8;
+}
+
+.footer .edamam {
+  width: 180px;
+}
+
+.footer .logo {
+  display: none;
+}
