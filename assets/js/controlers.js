@@ -2,6 +2,7 @@ import * as model from "./models/model";
 import headerView from "./Views/headerView";
 import heroView from "./Views/heroView";
 import tabView from "./Views/tabView";
+import tagView from "./Views/tagView";
 // import * as global from "./global";
 // -------------- Switch Theme ---------------------
 const controlerLoadingSwitchTheme = function () {
@@ -28,5 +29,7 @@ const init = function () {
 
   tabView.addHandlerTab();
   tabView.addHandlerTabKey();
+
+  tagView.addHandlerWindowLocation();
 };
 init();
