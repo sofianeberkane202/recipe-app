@@ -5,6 +5,10 @@
   overflow: hidden;
 }
 
+.icon-btn .material-symbols-outlined {
+  font-size: 2rem;
+}
+
 .btn {
   padding-inline: 24px;
   padding-block: 10px;
@@ -49,4 +53,9 @@
 .icon-btn.saved .bookmark.material-symbols-outlined {
   font-variation-settings: "FILL" 1;
   color: var(--on-background);
+}
+
+.badg-btn {
+  border-radius: var(--radius-pill);
+  background-color: var(--badge-btn);
 }
