@@ -1,5 +1,12 @@
 /* @import url("../style.css"); */
 
+/* padding */
+.pd-inline-54 {
+  padding-inline: 54px;
+}
+.pd-inline-48 {
+  padding-inline: 48px;
+}
 .pd-inline-24 {
   padding-inline: 24px;
 }
@@ -19,6 +26,35 @@
   padding-block: 8px;
 }
 
+/* margin */
+.mg-inline-24 {
+  margin-inline: 24px;
+}
+.mg-inline-18 {
+  margin-inline: 18px;
+}
+.mg-inline-16 {
+  margin-inline: 16px;
+}
+
+.mg-block-16 {
+  margin: 16px;
+}
+.mg-block-4 {
+  margin: 4px;
+}
+.mg-block-6 {
+  margin: 6px;
+}
+.mg-block-8 {
+  margin: 8px;
+}
+.mg-auto {
+  margin-inline: auto;
+}
+
+/* ------------------------ */
+
 .bd-y-end {
   border-block-end: 1px solid var(--outline);
 }
@@ -29,4 +65,11 @@
 
 .radius-circle {
   border-radius: var(--radius-circle);
+}
+
+.radius-4 {
+  border-radius: var(--radius-4);
+}
+.radius-8 {
+  border-radius: var(--radius-8);
 }

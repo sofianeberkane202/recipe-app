@@ -102,3 +102,44 @@
   font-variation-settings: "FILL" 1;
   background-color: var(--active-indicator);
 }
+
+/* -------------
+  - Hero
+-----------------*/
+
+.hero {
+  height: 480px;
+  background-color: var(--image-background);
+  background-image: url("../images/hero-banner-small.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.box-search-field {
+  position: relative;
+  height: 54px;
+  max-width: 480px;
+  width: 90%;
+}
+
+.box-search-field .leading-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.box-search-field .search-field {
+  background-color: var(--background);
+  height: 100%;
+}
+
+.box-search-field .search-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  width: 42px;
+}

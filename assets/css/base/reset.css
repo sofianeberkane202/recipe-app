@@ -70,4 +70,5 @@ main {
 *:focus-visible,
 *:focus {
   outline-color: var(--primary);
+  border-color: var(--primary);
 }

@@ -1,3 +1,11 @@
+.clr-white {
+  color: var(--white);
+}
+
+.text-center {
+  text-align: center;
+}
+
 .has-state {
   position: relative;
   overflow: hidden;

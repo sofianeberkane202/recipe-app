@@ -9,3 +9,7 @@
 .place-item-center {
   place-items: center;
 }
+
+.col-full {
+  grid-column: 1/-1;
+}
