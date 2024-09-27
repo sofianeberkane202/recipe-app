@@ -23,3 +23,17 @@
 .btn.has-icon {
   padding-inline-start: 16px;
 }
+
+/* 
+  - Tab
+*/
+
+.tab-btn {
+  height: 48px;
+  flex: 1 0 80px;
+  border-block-end: 2px solid transparent;
+}
+
+.tab-btn[aria-selected="true"] {
+  border-block-end-color: var(--primary);
+}

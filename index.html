@@ -195,7 +195,7 @@
           - Hero
         -->
         <section
-          class="hero grid place-content-center mg-inline-16 radius-8 text-center"
+          class="section hero grid place-content-center mg-inline-16 radius-8 text-center"
         >
           <h1 class="display-large col-full clr-white">Your desired dish?</h1>
 
@@ -231,6 +231,139 @@
           <p class="label-medium col-full clr-white">
             Search any recipe e.g: burger, pizza, sandwich, toast.
           </p>
+        </section>
+
+        <!-- 
+          - TAB
+        -->
+        <section class="section tab">
+          <div class="container">
+            <div
+              class="tab-list flex flex-nowrap flex-between flex-center-y"
+              style="--gap: 0.5rem"
+              role="tablist"
+              data-tab-list
+            >
+              <button
+                class="tab-btn has-state title-small"
+                aria-selected="true"
+                role="tab"
+                id="tab-1"
+                tabindex="0"
+                aria-controls="panel-1"
+                data-tab-btn
+              >
+                Breakfast
+              </button>
+
+              <button
+                class="tab-btn has-state title-small"
+                aria-selected="false"
+                role="tab"
+                id="tab-2"
+                tabindex="-1"
+                aria-controls="panel-2"
+                data-tab-btn
+              >
+                Lunch
+              </button>
+
+              <button
+                class="tab-btn has-state title-small"
+                aria-selected="false"
+                role="tab"
+                id="tab-3"
+                tabindex="-1"
+                aria-controls="panel-3"
+                data-tab-btn
+              >
+                Dinner
+              </button>
+
+              <button
+                class="tab-btn has-state title-small"
+                aria-selected="false"
+                role="tab"
+                id="tab-4"
+                tabindex="-1"
+                aria-controls="panel-4"
+                data-tab-btn
+              >
+                Snack
+              </button>
+
+              <button
+                class="tab-btn has-state title-small"
+                aria-selected="false"
+                role="tab"
+                id="tab-5"
+                tabindex="-1"
+                aria-controls="panel-5"
+                data-tab-btn
+              >
+                Teamtime
+              </button>
+            </div>
+
+            <div
+              class="tab-panel"
+              id="panel-1"
+              role="tabpanel"
+              aria-labelledby="tab-1"
+              tabindex="0"
+              data-tab-panel
+            >
+              Breakfast
+            </div>
+
+            <div
+              class="tab-panel"
+              id="panel-2"
+              role="tabpanel"
+              aria-labelledby="tab-2"
+              tabindex="0"
+              data-tab-panel
+              hidden
+            >
+              Lunch
+            </div>
+
+            <div
+              class="tab-panel"
+              id="panel-3"
+              role="tabpanel"
+              aria-labelledby="tab-3"
+              tabindex="0"
+              data-tab-panel
+              hidden
+            >
+              Dinner
+            </div>
+
+            <div
+              class="tab-panel"
+              id="panel-4"
+              role="tabpanel"
+              aria-labelledby="tab-4"
+              tabindex="0"
+              data-tab-panel
+              hidden
+            >
+              Snack
+            </div>
+
+            <div
+              class="tab-panel"
+              id="panel-5"
+              role="tabpanel"
+              aria-labelledby="tab-5"
+              tabindex="0"
+              data-tab-panel
+              hidden
+            >
+              Teamtime
+            </div>
+          </div>
         </section>
       </article>
     </main>

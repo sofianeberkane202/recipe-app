@@ -22,3 +22,14 @@
 .has-state:where(:hover, :focus-visible):not(:active) {
   background-color: var(--alpha-10);
 }
+
+.container {
+  max-width: 1130px;
+  width: 100%;
+  padding-inline: 16px;
+  margin-inline: auto;
+}
+
+.section {
+  margin-block-end: 12px;
+}

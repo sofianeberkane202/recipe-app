@@ -143,3 +143,15 @@
   bottom: 4px;
   width: 42px;
 }
+
+/* ---------------
+  - Tab
+------------------*/
+
+.tab-list {
+  border-block-end: 1px solid var(--outline);
+  margin-block-end: 12px;
+  overflow-x: auto;
+  position: sticky;
+  top: var(--header-height);
+}
