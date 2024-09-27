@@ -1,0 +1,36 @@
+/* skeleton card */
+
+.skeleton-card {
+  animation: data-loading 500ms linear infinite alternate;
+  opacity: 0.4;
+}
+
+.skeleton {
+  background-color: var(--image-background);
+  border-radius: var(--radius-4);
+}
+.card-banner {
+  aspect-ratio: 1/1;
+}
+
+.skeleton-card .card-title {
+  height: 16px;
+  width: 50%;
+}
+
+.skeleton-card .card-text {
+  height: 16px;
+  width: 80%;
+}
+
+.card {
+  cursor: pointer;
+  transition: var(--transition-short);
+  transform: translateY(30px);
+  animation: fade-out 500ms var(--transition-timing-function)
+    var(--animation-delay) forwards;
+}
+
+.card:where(:hover, :focus-visible):not(:active) a {
+  color: var(--primary);
+}

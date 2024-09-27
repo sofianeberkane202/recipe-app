@@ -90,6 +90,7 @@
   --mobile-nav-height: 80px;
   --section-gap: 32px;
   --gap: 1rem;
+  --animation-delay: 100ms;
 }
 
 @media (prefers-reduced-motion: no-preference) {

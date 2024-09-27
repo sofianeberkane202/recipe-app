@@ -157,3 +157,11 @@
   z-index: 3;
   background-color: var(--background);
 }
+
+.image-holder {
+  background-color: var(--image-background);
+  background-image: url("../images/image-placeholder.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30%;
+}

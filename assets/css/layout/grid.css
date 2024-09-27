@@ -13,3 +13,7 @@
 .col-full {
   grid-column: 1/-1;
 }
+
+.grid-list {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}

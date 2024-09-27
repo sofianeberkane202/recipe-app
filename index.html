@@ -318,7 +318,64 @@
               tabindex="0"
               data-tab-panel
             >
-              Breakfast
+              <div class="grid-list grid">
+                <div class="skeleton-card flex flex-column">
+                  <div class="card-banner skeleton radius-8"></div>
+                  <div class="card-body flex flex-column">
+                    <div class="card-title skeleton"></div>
+                    <div class="card-text skeleton"></div>
+                  </div>
+                </div>
+
+                <div class="card flex flex-column">
+                  <figure
+                    class="image-holder image-cover radius-8 overflow-h flex-1"
+                  >
+                    <img
+                      src="./assets/images/recipe.jpg"
+                      width="200"
+                      height="200"
+                      alt="Recipe name"
+                    />
+                  </figure>
+
+                  <div
+                    class="card-body pd-inline-8 flex flex-column"
+                    style="--gap: 0.5rem"
+                  >
+                    <h3 class="card-title title-small">
+                      <a href="./detail.html">Recipe Name</a>
+                    </h3>
+
+                    <div class="card-info flex flex-between flex-center-y">
+                      <div class="card-time flex flex-center">
+                        <span
+                          class="material-symbols-outlined"
+                          style="font-size: 1.8rem"
+                          aria-hidden="true"
+                          >schedule</span
+                        >
+                        <span class="label-small">2 minutes</span>
+                      </div>
+
+                      <button
+                        class="icon-btn flex flex-column flex-center removed has-state"
+                      >
+                        <span
+                          class="material-symbols-outlined bookmark-add"
+                          aria-hidden="true"
+                          >bookmark_add</span
+                        >
+                        <span
+                          class="material-symbols-outlined bookmark"
+                          aria-hidden="true"
+                          >bookmark</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div

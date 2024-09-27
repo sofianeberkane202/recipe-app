@@ -2,6 +2,7 @@
   background-color: var(--primary-container);
   padding: 8px;
   border-radius: var(--radius-circle);
+  overflow: hidden;
 }
 
 .btn {
@@ -36,4 +37,16 @@
 
 .tab-btn[aria-selected="true"] {
   border-block-end-color: var(--primary);
+}
+
+/* TAB panel */
+
+.icon-btn.removed .bookmark,
+.icon-btn.saved .bookmark-add {
+  display: none;
+}
+
+.icon-btn.saved .bookmark.material-symbols-outlined {
+  font-variation-settings: "FILL" 1;
+  color: var(--on-background);
 }
