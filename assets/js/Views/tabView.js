@@ -34,16 +34,18 @@ class TabView {
 
       this.#updateTabBtnAndPanelUI($currentPanel, $currentTabBtn);
     });
+  }
 
+  addHandlerTabKey() {
     document.addEventListener("keydown", (e) => {
       let currentActiveTabBtnIndex = +this.lastActiveTabBtn.dataset.id - 1;
 
-      if (e.key === "ArrowRight") {
+      if (e.key === "ArrowRight" && e.target.closest("[data-tab-btn]")) {
         currentActiveTabBtnIndex =
           (currentActiveTabBtnIndex + 1) % this.#tabBtns.length;
       }
 
-      if (e.key === "ArrowLeft") {
+      if (e.key === "ArrowLeft" && e.target.closest("[data-tab-btn]")) {
         currentActiveTabBtnIndex--;
         if (currentActiveTabBtnIndex < 0)
           currentActiveTabBtnIndex = this.#tabBtns.length - 1;

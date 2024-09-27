@@ -21,8 +21,12 @@ const controlerSwitchTheme = function (newTheme) {
 const controllerSearchField = function () {};
 const init = function () {
   headerView.addHandlerSwitchTheme(controlerSwitchTheme);
+
   addHandlerLoadTheme(controlerLoadingSwitchTheme);
+
   heroView.addHandlerSearchField();
+
   tabView.addHandlerTab();
+  tabView.addHandlerTabKey();
 };
 init();
