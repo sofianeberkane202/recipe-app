@@ -154,4 +154,6 @@
   overflow-x: auto;
   position: sticky;
   top: var(--header-height);
+  z-index: 3;
+  background-color: var(--background);
 }
