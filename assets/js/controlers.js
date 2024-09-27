@@ -1,6 +1,8 @@
 import * as model from "./models/model";
 import headerView from "./Views/headerView";
+import heroView from "./Views/heroView";
 // import * as global from "./global";
+// -------------- Switch Theme ---------------------
 const controlerLoadingSwitchTheme = function () {
   model.getCurrentTheme();
 
@@ -13,8 +15,12 @@ const controlerSwitchTheme = function (newTheme) {
   controlerLoadingSwitchTheme();
 };
 
+// -----------------------------------------------
+
+const controllerSearchField = function () {};
 const init = function () {
   headerView.addHandlerSwitchTheme(controlerSwitchTheme);
   addHandlerLoadTheme(controlerLoadingSwitchTheme);
+  heroView.addHandlerSearchField();
 };
 init();
