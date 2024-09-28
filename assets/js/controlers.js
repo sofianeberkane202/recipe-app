@@ -1,8 +1,10 @@
+import { cardQueries } from "./config";
 import * as model from "./models/model";
 import headerView from "./Views/headerView";
 import heroView from "./Views/heroView";
 import tabView from "./Views/tabView";
 import tagView from "./Views/tagView";
+
 // import * as global from "./global";
 // -------------- Switch Theme ---------------------
 const controlerLoadingSwitchTheme = function () {
@@ -20,6 +22,22 @@ const controlerSwitchTheme = function (newTheme) {
 // -----------------------------------------------
 
 const controllerSearchField = function () {};
+
+const controllerTabData = async function (queries) {
+  try {
+    tabView.renderSkeleton();
+    await model.fetchData(queries);
+    model.fetchRecipeSavedData();
+    tabView.render(model.state.data, model.state.recipeSavedData);
+  } catch (error) {}
+};
+
+const cotrollerSaveRecipe = async function (recipeId) {
+  try {
+    await model.saveRecipeInLocalStorage(recipeId);
+  } catch (error) {}
+};
+
 const init = function () {
   headerView.addHandlerSwitchTheme(controlerSwitchTheme);
 
@@ -29,6 +47,10 @@ const init = function () {
 
   tabView.addHandlerTab();
   tabView.addHandlerTabKey();
+  tabView.addHandlerTabContent(controllerTabData);
+  tabView.addHandlerLoadRecipes(controllerTabData);
+  tabView.addHandlerDetailRecipe();
+  tabView.addHandlerSaveRecipe(cotrollerSaveRecipe);
 
   tagView.addHandlerWindowLocation();
 };
