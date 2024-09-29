@@ -36,3 +36,20 @@ export const generateUrl = function (queries, ACCESS_POINT_API = ACCESS_POINT) {
 
   return url;
 };
+
+export const generateStateData = function (data) {
+  return data.hits.map((recipeInfo) => {
+    const { recipe } = recipeInfo;
+    const { time, timeUnit } = getTime(recipe.totalTime);
+
+    return {
+      image: recipe.image,
+      title: recipe.label,
+      cookingTime: {
+        time,
+        unit: timeUnit,
+      },
+      recipeId: recipe.uri.slice(recipe.uri.lastIndexOf("_") + 1),
+    };
+  });
+};

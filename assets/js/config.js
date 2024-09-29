@@ -5,4 +5,6 @@ const /** {Array} */ cardQueries = [
     ["field", "totalTime"],
   ];
 
-export { cardQueries };
+const cuisinType = ["Chinese", "Mediterranean", "Asian", "French", "Mexican"];
+
+export { cardQueries, cuisinType };
