@@ -1,9 +1,10 @@
 import { ACCESS_POINT, ACCESS_POINT, API_KEY, APP_ID, TYPE } from "../api";
-import { cardQueries } from "../config";
+import { cardQueries, cuisinType } from "../config";
 import * as helper from "../helper";
 export const state = {
   theme: "",
   data: "",
+  sliderData: new Map(),
   recipeSavedData: new Set(),
 };
 
@@ -26,34 +27,11 @@ export const fetchData = async function (
   ACCESS_POINT_API = ACCESS_POINT
 ) {
   try {
-    const /** {String} */ query = queries
-        ?.join("&")
-        .replace(/,/g, "=")
-        .replace(/ /g, "%20")
-        .replace(/\+/g, "%2B");
+    const url = helper.generateUrl(queries);
 
-    const /** {String} */ url = `${ACCESS_POINT_API}?app_id=${APP_ID}&app_key=${API_KEY}&type=${TYPE}${
-        query ? `&${query}` : ""
-      }`;
+    const data = await helper.fetchDataJson(url);
 
-    const /** {Objetc} */ response = await fetch(url);
-    if (!response.ok) return;
-    const data = await response.json();
-    state.data = data.hits;
-
-    state.data = data.hits.map((recipeInfo) => {
-      const { recipe } = recipeInfo;
-      const { time, timeUnit } = helper.getTime(recipe.totalTime);
-      return {
-        image: recipe.image,
-        title: recipe.label,
-        cookingTime: {
-          time,
-          unit: timeUnit,
-        },
-        recipeId: recipe.uri.slice(recipe.uri.lastIndexOf("_") + 1),
-      };
-    });
+    state.data = helper.generateStateData(data);
   } catch (error) {
     console.error(error);
   }
@@ -90,3 +68,24 @@ export const saveRecipeInLocalStorage = async function (recipeId) {
     );
   }
 };
+
+// -------------------------------- featch data for slider card ------------------
+
+export const fetchSliderData = async function (/*queries*/) {
+  try {
+    for (const cuisine of cuisinType) {
+      const queries = [...cardQueries, ["cuisineType", cuisine]];
+      const url = helper.generateUrl(queries);
+
+      const data = await helper.fetchDataJson(url);
+      state.sliderData.set(
+        queries.at(-1).at(-1),
+        helper.generateStateData(data)
+      );
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// fetchSliderData([...cardQueries, ["cuisineType", "American"]]);
