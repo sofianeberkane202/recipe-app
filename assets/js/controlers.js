@@ -4,6 +4,7 @@ import headerView from "./Views/headerView";
 import heroView from "./Views/heroView";
 import tabView from "./Views/tabView";
 import tagView from "./Views/tagView";
+import sliderView from "./Views/sliderView";
 
 // import * as global from "./global";
 // -------------- Switch Theme ---------------------
@@ -38,6 +39,14 @@ const cotrollerSaveRecipe = async function (recipeId) {
   } catch (error) {}
 };
 
+const controllerSlider = async function (/*queries*/) {
+  try {
+    sliderView.renderSkeleton();
+    await model.fetchSliderData(/*queries*/);
+    sliderView.render(model.state.sliderData, model.state.recipeSavedData);
+  } catch (error) {}
+};
+
 const init = function () {
   headerView.addHandlerSwitchTheme(controlerSwitchTheme);
 
@@ -53,5 +62,10 @@ const init = function () {
   tabView.addHandlerSaveRecipe(cotrollerSaveRecipe);
 
   tagView.addHandlerWindowLocation();
+
+  sliderView.addHandlerSlider(controllerSlider);
+  sliderView.addHandlerSaveRecipe(cotrollerSaveRecipe);
+  sliderView.addHandlerDetailRecipe();
 };
+
 init();
