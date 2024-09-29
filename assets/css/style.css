@@ -263,3 +263,15 @@ a[data-show-more-link]:where(:hover, :focus-visible) {
 .footer .logo {
   display: none;
 }
+
+/* -------------
+  Snackbar
+---------------- */
+
+.snackbar {
+  height: 48px;
+  width: 100%;
+  background-color: var(--on-background);
+  color: var(--background);
+  animation: snackbar 3s var(--transition-timing-function) forwards;
+}

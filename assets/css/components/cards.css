@@ -29,6 +29,7 @@
   transform: translateY(30px);
   animation: fade-out 500ms var(--transition-timing-function)
     var(--animation-delay) forwards;
+  height: 100%;
 }
 
 .card:where(:hover, :focus-visible):not(:active) a {

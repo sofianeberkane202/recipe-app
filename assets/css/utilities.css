@@ -59,3 +59,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.snackbar-container {
+  position: fixed;
+  bottom: calc(var(--mobile-nav-height) + 16px);
+  right: 16px;
+  left: 16px;
+}
+
+.snackbar-box {
+  display: grid;
+  gap: 8px;
+  z-index: -1;
+}

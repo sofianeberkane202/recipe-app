@@ -1,0 +1,11 @@
+@media (min-width: 480px) {
+  .slider .slider-list .slider-item {
+    min-width: calc((100% / 4) - 4px);
+  }
+}
+
+@media (min-width: 992px) {
+  .slider .slider-list .slider-item {
+    min-width: calc((100% / 6) - 7px);
+  }
+}
