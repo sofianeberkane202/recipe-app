@@ -1,3 +1,4 @@
+import * as global from "../global";
 class HeaderView {
   #parentElement = document.querySelector(".header");
 
@@ -7,7 +8,7 @@ class HeaderView {
       if (!switchBtn) return;
 
       const newTheme =
-        $HTML.getAttribute("data-theme") === "light" ? "dark" : "light";
+        global.$HTML.getAttribute("data-theme") === "light" ? "dark" : "light";
       // update theme on session storage
       handler(newTheme);
     });

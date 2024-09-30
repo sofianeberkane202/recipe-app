@@ -1,3 +1,4 @@
+import * as global from "../global";
 export class View {
   generateSkeletonMarkup() {
     return `
@@ -59,6 +60,7 @@ export class View {
   }
 
   addHandlerSaveRecipe(handler) {
+    console.log(this);
     this.parentElement.addEventListener("click", (e) => {
       e.preventDefault();
       const $btnIconSave = e.target.closest("[data-tab-recipe-save-btn]");
@@ -81,7 +83,12 @@ export class View {
       handler(recipeId);
       $btnIconSave.classList.toggle("saved");
       $btnIconSave.classList.toggle("removed");
-      showNotification();
+
+      const stateOfSave = $btnIconSave.classList.contains("saved")
+        ? "saved"
+        : "removed";
+      // console.log(stateOfSave);
+      global.showNotification(stateOfSave);
     });
   }
 
@@ -94,7 +101,6 @@ export class View {
       let recipeData;
 
       if ($recipe?.closest(".slider")?.hasAttribute("cuisinetype")) {
-        console.log("enter");
         const cuisineType = $recipe
           .closest(".slider")
           .getAttribute("cuisinetype");

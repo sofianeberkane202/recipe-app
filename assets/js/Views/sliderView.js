@@ -76,7 +76,6 @@ class SliderView extends View {
   #generateSkeletonsMarkup() {
     const markup = [];
     for (const cuisine of cuisinType) {
-      console.log(cuisine);
       markup.push(this.#generateSkeleton(cuisine));
     }
 

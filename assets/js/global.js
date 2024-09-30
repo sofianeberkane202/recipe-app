@@ -1,22 +1,22 @@
-const $HTML = document.documentElement;
-const $switchBtn = document.querySelector("[switch-theme-btn]");
-const $body = document.querySelector("body");
+export const $HTML = document.documentElement;
+export const $switchBtn = document.querySelector("[switch-theme-btn]");
+export const $body = document.querySelector("body");
 
-const isDark = window.matchMedia("(prefers-color-scheme:dark)").matches;
+export const isDark = window.matchMedia("(prefers-color-scheme:dark)").matches;
 
 let isPressed = false;
 
-const addHandlerLoadTheme = function (handler) {
-  window.addEventListener("load", handler);
-};
+// const addHandlerLoadTheme = function (handler) {
+//   window.addEventListener("load", handler);
+// };
 
-const updatePressedAria = function (ispressed) {
+export const updatePressedAria = function (ispressed) {
   console.log("updated");
   isPressed = ispressed === "dark" ? true : false;
   $switchBtn.setAttribute("aria-pressed", isPressed);
 };
 
-const updateThemeUI = function (theme) {
+export const updateThemeUI = function (theme) {
   if (theme) {
     $HTML.setAttribute("data-theme", theme);
     updatePressedAria(theme);
@@ -28,23 +28,32 @@ const updateThemeUI = function (theme) {
 };
 
 // snackbar
-const wait = function (seconds) {
-  return new Promise((Resolved) => {
-    return setTimeout(Resolved, seconds * 1000);
+export const wait = function (seconds) {
+  let timeoutId;
+  const promise = new Promise((resolved) => {
+    return setTimeout(resolved, seconds * 1000);
   });
+
+  return { promise, timeoutId };
 };
 
 const $snackBarContainer = document.querySelector(".snackbar-container");
-const showNotification = async function () {
+export const showNotification = async function (state) {
+  let timeId;
   const markup = `
       <div class="snackbar flex flex-between flex-center-y pd-inline-16">
-        <p class="body-medium">Added to Recipe book</p>
+        <p class="body-medium">${
+          state === "removed" ? "Removed in" : "Added to"
+        } Recipe book</p>
       </div>
     
   `;
+  if (timeId) clearTimeout(timeId);
+  const { promise, timeoutId } = wait(4);
+  timeId = timeoutId;
   $snackBarContainer.innerHTML = "";
-  $snackBarContainer.style.zIndex = 4;
   $snackBarContainer.insertAdjacentHTML("beforeend", markup);
-  await wait(4);
-  $snackBarContainer.style.zIndex = -1;
+
+  await promise;
+  $snackBarContainer.innerHTML = "";
 };
