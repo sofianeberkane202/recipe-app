@@ -25,6 +25,14 @@
   background-color: var(--primary-hover);
 }
 
+.btn-secondary {
+  background-color: var(--primary-container);
+}
+
+.btn-secondary:where(:hover, :focus-visible):not(:active) {
+  background-color: var(--outline);
+}
+
 .btn.has-icon {
   padding-inline-start: 16px;
 }
