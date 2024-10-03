@@ -57,3 +57,10 @@ export const showNotification = async function (state) {
   await promise;
   $snackBarContainer.innerHTML = "";
 };
+
+export const getDataFromURL = function () {
+  const queriesStr = window.location.search.slice(1);
+  if (!queriesStr) return "";
+  const queries = queriesStr && queriesStr.split("&").map((i) => i.split("="));
+  return queries;
+};

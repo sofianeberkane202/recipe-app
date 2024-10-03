@@ -36,6 +36,10 @@
   padding-block: 12px;
 }
 
+.pd-block-16 {
+  padding-block: 16px;
+}
+
 /* margin */
 .mg-inline-24 {
   margin-inline: 24px;

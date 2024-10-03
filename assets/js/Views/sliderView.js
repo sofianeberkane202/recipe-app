@@ -20,9 +20,9 @@ class SliderView extends View {
 
   render(data, savedRecipes) {
     this.data = data;
+    console.log("sliderdata", this.#data);
     this.savedRecipes = savedRecipes;
     const markup = this.#generateMarkup();
-    // this.#parentElement.innerHTML = "";
     this.clear();
 
     this.#parentElement.insertAdjacentHTML("afterbegin", markup);
@@ -189,7 +189,7 @@ class SliderView extends View {
   get parentElement() {
     return this.#parentElement;
   }
-  setparentElement(parentElement) {
+  set parentElement(parentElement) {
     this.#parentElement = parentElement;
   }
 }

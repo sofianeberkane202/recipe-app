@@ -1,5 +1,11 @@
 import * as global from "../global";
 export class View {
+  render(parentElement) {
+    const markup = this._generateMarkup();
+    this.clear(parentElement);
+    parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
   generateSkeletonMarkup() {
     return `
     <div class="skeleton-card flex flex-column">
@@ -60,9 +66,9 @@ export class View {
   }
 
   addHandlerSaveRecipe(handler) {
-    console.log(this);
+    console.log(this.parentElement);
     this.parentElement.addEventListener("click", (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       const $btnIconSave = e.target.closest("[data-tab-recipe-save-btn]");
       if (!$btnIconSave) return;
       let recipeData;
@@ -73,6 +79,7 @@ export class View {
           .getAttribute("cuisinetype");
         recipeData = this.data.get(cuisineType);
       } else {
+        console.log("enter dtaa");
         recipeData = this.data;
       }
 
@@ -115,7 +122,7 @@ export class View {
     });
   }
 
-  clear() {
-    this.parentElement.innerHTML = "";
+  clear(parentElement = this.parentElement) {
+    parentElement.innerHTML = "";
   }
 }

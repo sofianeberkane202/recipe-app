@@ -38,16 +38,10 @@ class Controller extends ControllerBase {
     } catch (error) {}
   }
 
-  async cotrollerSaveRecipe(recipeId) {
-    try {
-      await model.saveRecipeInLocalStorage(recipeId);
-    } catch (error) {}
-  }
-
-  async controllerSlider(/*queries*/) {
+  async controllerSlider(queries) {
     try {
       sliderView.renderSkeleton();
-      await model.fetchSliderData(/*queries*/);
+      await model.fetchSliderData(queries);
       sliderView.render(model.state.sliderData, model.state.recipeSavedData);
     } catch (error) {}
   }

@@ -7,4 +7,13 @@ const /** {Array} */ cardQueries = [
 
 const cuisinType = ["Chinese", "Mediterranean", "Asian", "French", "Mexican"];
 
-export { cardQueries, cuisinType };
+const defaultQuieries = [
+  ["mealType", "breakfast"],
+  ["mealType", "dinner"],
+  ["mealType", "lunch"],
+  ["mealType", "snack"],
+  ["mealType", "teatime"],
+  ...cardQueries,
+];
+
+export { cardQueries, cuisinType, defaultQuieries };

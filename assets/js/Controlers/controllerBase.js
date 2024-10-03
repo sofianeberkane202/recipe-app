@@ -26,9 +26,15 @@ export class ControllerBase {
     window.addEventListener("load", handler);
   }
 
+  async cotrollerSaveRecipe(recipeId) {
+    try {
+      await model.saveRecipeInLocalStorage(recipeId);
+    } catch (error) {}
+  }
+
   initBase() {
     headerView.addHandlerSwitchTheme(this.controlerSwitchTheme);
-    // addHandlerLoadTheme(this.controlerLoadingSwitchTheme);
+
     this.addHandlerLoadTheme(this.controlerLoadingSwitchTheme);
   }
 }

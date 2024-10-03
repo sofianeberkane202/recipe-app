@@ -6,6 +6,7 @@ export const state = {
   data: "",
   sliderData: new Map(),
   recipeSavedData: new Set(),
+  nextPageURL: "",
 };
 
 export const getCurrentTheme = function () {
@@ -22,25 +23,33 @@ export const updateTheme = function (newTheme) {
  * @param {Array} quiries Query array
  **/
 
-export const fetchData = async function (
-  queries,
-  ACCESS_POINT_API = ACCESS_POINT
-) {
+const getData = async function (url) {
+  const data = await helper.fetchDataJson(url);
+  console.log(data);
+
+  state.nextPageURL = data._links?.next?.href;
+
+  state.data = helper.generateStateData(data);
+};
+
+export const fetchData = async function (queries) {
   try {
     const url = helper.generateUrl(queries);
 
-    const data = await helper.fetchDataJson(url);
-
-    state.data = helper.generateStateData(data);
+    await getData(url);
   } catch (error) {
     console.error(error);
   }
 };
 
-export const fetchRecipeSavedData = function () {
+export const fetchRecipeSavedData = async function () {
   state.recipeSavedData = new Set(
     JSON.parse(localStorage.getItem("recipeSaved"))
   );
+};
+
+export const fetchNextPageData = async function () {
+  await getData(state.nextPageURL);
 };
 
 // ----------------- Save Recipies ------------------------
@@ -89,3 +98,16 @@ export const fetchSliderData = async function (/*queries*/) {
 };
 
 // fetchSliderData([...cardQueries, ["cuisineType", "American"]]);
+
+// -----------------------
+// Reacipes page
+// -----------------------
+
+// --------------------- Get data for rendring them on recipe page
+
+// export const getrecipeFilteredData = async function (queries) {
+//   try {
+//     console.log("model", queries);
+
+//   } catch (error) {}
+// };

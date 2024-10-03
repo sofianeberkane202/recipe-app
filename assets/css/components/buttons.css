@@ -53,12 +53,12 @@
 
 /* TAB panel */
 
-.icon-btn.removed .bookmark,
-.icon-btn.saved .bookmark-add {
+.removed .bookmark,
+.saved .bookmark-add {
   display: none;
 }
 
-.icon-btn.saved .bookmark.material-symbols-outlined {
+.saved .bookmark.material-symbols-outlined {
   font-variation-settings: "FILL" 1;
   color: var(--on-background);
 }
@@ -66,4 +66,24 @@
 .badg-btn {
   border-radius: var(--radius-pill);
   background-color: var(--badge-btn);
+}
+
+/* filter */
+
+.btn-filter {
+  padding-inline: 12px;
+}
+
+.btn-filter.active {
+  position: fixed;
+  bottom: calc(var(--mobile-nav-height) + 16px);
+  right: 16px;
+  z-index: 1;
+  box-shadow: var(--shadow-2);
+  border-radius: var(--radius-8);
+  height: 48px;
+  padding: 16px;
+  gap: 12px;
+  transition: none;
+  animation: btn-filter-active 200ms var(--transition-timing-function) forwards;
 }

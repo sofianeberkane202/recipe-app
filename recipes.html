@@ -58,7 +58,7 @@
     ></script>
   </head>
 
-  <body class="flex flex-column">
+  <body class="flex flex-column" style="height: 200vh">
     <!-- 
       - #HEADER
     -->
@@ -197,7 +197,7 @@
           - #Filter bar
         -->
 
-        <div class="filter-bar flex flex-column active" data-filter-bar>
+        <div class="filter-bar flex flex-column" data-filter-bar>
           <div
             class="title-wrapper flex flex-between flex-center-y"
             style="--gap: 16px"
@@ -1052,7 +1052,7 @@
               </button>
 
               <div class="accordination-content" id="meal">
-                <div class="accordination-overflow" data-filter="meal">
+                <div class="accordination-overflow" data-filter="mealType">
                   <label class="filter-chip label-large">
                     Breakfast
                     <input
@@ -1131,7 +1131,7 @@
               </button>
 
               <div class="accordination-content" id="dish">
-                <div class="accordination-overflow" data-filter="dish">
+                <div class="accordination-overflow" data-filter="dishType">
                   <label class="filter-chip label-large">
                     Biscuits and cookies
                     <input
@@ -1331,7 +1331,7 @@
               </button>
 
               <div class="accordination-content" id="cuisine">
-                <div class="accordination-overflow" data-filter="cuisine">
+                <div class="accordination-overflow" data-filter="cuisineType">
                   <label class="filter-chip label-large">
                     American
                     <input
@@ -1553,6 +1553,32 @@
         </div>
 
         <div class="overlay" data-overlay data-filter-toggler></div>
+
+        <div class="recipe-container container">
+          <div class="title-wrapper flex flex-between flex-center-y">
+            <h2 class="headline-small">All Recipes</h2>
+            <button
+              class="btn btn-secondary btn-filter has-state flex flex-center-y"
+              aria-label="Open filter bar"
+              data-filter-toggler
+              data-filter-btn
+            >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >filter_list</span
+              >
+
+              <div class="wrapper flex flex-center-y">
+                <span class="label-large">Filters</span>
+                <div class="badge label-small" data-filter-count></div>
+              </div>
+            </button>
+          </div>
+          <span class="btn-hidden flex-1"></span>
+
+          <div class="grid-list grid" data-grid-list></div>
+
+          <div class="load-more grid place-content-center" data-load-more></div>
+        </div>
       </article>
     </main>
 

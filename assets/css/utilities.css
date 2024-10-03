@@ -114,3 +114,35 @@
   opacity: 1;
   pointer-events: all;
 }
+
+.recipe-container {
+  padding-block-end: 36px;
+}
+
+.recipe-container .grid-list {
+  position: relative;
+}
+
+.recipe-container .title-wrapper {
+  height: 40px;
+  margin-block-end: 16px;
+}
+
+.badge {
+  background-color: var(--error);
+  color: var(--white);
+  height: 16px;
+  min-width: 16px;
+  padding-inline: 4px;
+  border-radius: var(--radius-pill);
+}
+
+.btn-hidden {
+  height: 1px;
+  width: 100%;
+}
+
+/* skeleton */
+.detail-content-skeleton {
+  aspect-ratio: 1/1;
+}
