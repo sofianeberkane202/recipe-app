@@ -32,12 +32,13 @@ export class View {
     return `
       <div class="card flex flex-column" style="--animation-delay:${
         100 * i
-      }ms;--gap:0" data-id="${i}">
+      }ms;--gap:0" data-id="${recipe.recipeId}" >
+                  <a href="./detail.html?recipe=${recipe.recipeId}">
                   <figure class="card-media image-holder overflow-h">
                     <img src="${
                       recipe.image
                     }" width="200" height="200" loading="lazy" alt="Recipe name" class="image-cover">
-                  </figure>
+                  </figure></a>
 
         <div class="card-body flex-1 pd-inline-8 pd-block-8 flex flex-column flex-between" style="--gap: .5rem">
           <h3 class="card-title title-small">
@@ -66,7 +67,6 @@ export class View {
   }
 
   addHandlerSaveRecipe(handler) {
-    console.log(this.parentElement);
     this.parentElement.addEventListener("click", (e) => {
       // e.preventDefault();
       const $btnIconSave = e.target.closest("[data-tab-recipe-save-btn]");
@@ -83,11 +83,9 @@ export class View {
         recipeData = this.data;
       }
 
-      const cardId = +$btnIconSave.closest(".card").dataset.id;
+      const cardId = $btnIconSave.closest(".card").dataset.id;
 
-      const { recipeId } = recipeData[cardId];
-
-      handler(recipeId);
+      handler(cardId);
       $btnIconSave.classList.toggle("saved");
       $btnIconSave.classList.toggle("removed");
 
@@ -96,29 +94,6 @@ export class View {
         : "removed";
       // console.log(stateOfSave);
       global.showNotification(stateOfSave);
-    });
-  }
-
-  addHandlerDetailRecipe() {
-    this.parentElement.addEventListener("click", (e) => {
-      const $recipe = e.target.closest("figure");
-
-      if (!$recipe) return;
-
-      let recipeData;
-
-      if ($recipe?.closest(".slider")?.hasAttribute("cuisinetype")) {
-        const cuisineType = $recipe
-          .closest(".slider")
-          .getAttribute("cuisinetype");
-        recipeData = this.data.get(cuisineType);
-      } else {
-        recipeData = this.data;
-      }
-
-      const recipeIndex = +$recipe.closest(".card").dataset.id;
-
-      window.location.href += `detail.html?recipe=${recipeData[recipeIndex].recipeId}`;
     });
   }
 

@@ -8,7 +8,7 @@ class TagView {
       if (!$linkBtn) return;
       const query = $linkBtn.textContent.toLowerCase().trim();
       console.log(query);
-      const link = `/recipes.html?health=${query}`;
+      const link = `recipes.html?health=${query}`;
       window.location.href += link;
     });
   }

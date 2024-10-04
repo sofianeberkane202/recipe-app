@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saved recipes - CookIO</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 
+    - Primary meta tags
+  -->
+
+    <title>All Recipes - Cook.io</title>
+    <meta name="title" content="Cook.io - Cooking made easy." />
+    <meta
+      name="description"
+      content="This is a recipe application made by sofiane bserkane"
+    />
+
+    <!-- 
+      - favicon
+    -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+
+    <!-- 
+      - google fonts
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 
+      material icons 
+    -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0"
+    />
+
+    <!-- 
+      - custom CSS
+    -->
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- 
+      - custome js
+    -->
+    <script
+      type="module"
+      src="./assets/js/Controlers/controllerSavedRecipes.js"
+    ></script>
+  </head>
+
+  <body class="flex flex-column">
+    <!-- 
+      - #HEADER
+    -->
+    <header
+      class="header flex flex-between flex-center-y pd-inline-16 bd-y-end"
+      style="--gap: 1.2rem"
+    >
+      <a href="/" class="logo">
+        <img
+          src="./assets/images/logo-light.svg"
+          class="logo-light"
+          width="150"
+          alt="Cook.io"
+        />
+        <img
+          src="./assets/images/logo-dark.svg"
+          class="logo-dark"
+          width="150"
+          alt="Cook.io"
+        />
+      </a>
+
+      <nav class="navbar flex-1 flex flex-center" style="height: 100%">
+        <ul class="navbar-list flex" style="--gap: 2rem">
+          <li class="has-state">
+            <a
+              href="/"
+              class="title-small flex flex-center"
+              aria-selected="false"
+              >Home</a
+            >
+          </li>
+
+          <li class="has-state">
+            <a
+              href="./recipes.html"
+              class="title-small flex flex-center"
+              aria-selected="false"
+              >Recipes</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <button
+        class="icon-btn theme-switch has-state flex flex-column"
+        style="--gap: 0"
+        aria-label="Toggle light and dark theme"
+        aria-pressed="false"
+        switch-theme-btn
+      >
+        <span class="material-symbols-outlined light-icon" aria-hidden="true"
+          >light_mode</span
+        >
+        <span class="material-symbols-outlined dark-icon" aria-hidden="true"
+          >dark_mode</span
+        >
+      </button>
+
+      <a
+        href="./saved-recipes.html"
+        class="btn btn-primary has-icon flex flex-center"
+        style="--gap: 1rem"
+        data-save-recipes
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-size: 1.8rem"
+          aria-hidden="true"
+          >book</span
+        >
+        <span class="span label-medium">Saved Recipes</span>
+      </a>
+    </header>
+
+    <!-- 
+      - Mobile NAV
+    -->
+    <section class="mobile-nav">
+      <ul class="nav-list">
+        <li class="list-item">
+          <a
+            href="./recipes.html"
+            class="nav-link flex flex-column"
+            style="--gap: 0.5rem"
+            aria-selected="false"
+          >
+            <span
+              class="material-symbols-outlined pd-inline-18 pd-block-6 radius-pill"
+              aria-hidden="true"
+              >lunch_dining</span
+            >
+            <span class="label-medium">Recipes</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a
+            href="/"
+            class="nav-link flex flex-column"
+            style="--gap: 0.5rem"
+            aria-selected="false"
+          >
+            <span
+              class="material-symbols-outlined pd-inline-18 pd-block-6 radius-pill"
+              aria-hidden="true"
+              >home</span
+            >
+
+            <span class="label-medium">Home</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a
+            href="#"
+            class="nav-link flex flex-column"
+            style="--gap: 0.5rem"
+            aria-selected="true"
+          >
+            <span
+              class="material-symbols-outlined pd-inline-18 pd-block-6 radius-pill"
+              aria-hidden="true"
+              >book</span
+            >
+
+            <span class="label-medium">Saved</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <main id="main-content">
+      <article
+        class="article container saved-recipe-page"
+        data-saved-recipe-container
+      >
+        <h2 class="headline-small section-title">All Save Recipece</h2>
+        <div class="grid-list grid"></div>
+      </article>
+    </main>
+
+    <!-- 
+      #footer
+    -->
+    <footer class="footer flex flex-warp flex-center">
+      <p class="copyright body-medium">Copyright 2023 codewithsadee</p>
+      <a href="/" class="logo">
+        <img
+          src="./assets/images/logo-light.svg"
+          class="logo-light"
+          width="150"
+          alt="Cook.io"
+        />
+        <img
+          src="./assets/images/logo-dark.svg"
+          class="logo-dark"
+          width="150"
+          alt="Cook.io"
+        />
+      </a>
+
+      <a href="https://www.edamam.com/" target="_blank" class="edamam">
+        <img
+          src="./assets/images/edamam.svg"
+          width="200"
+          height="40"
+          loading="lazy"
+          alt="edamam free recipe api"
+        />
+      </a>
+    </footer>
+
+    <!-- 
+      #SnackBar Container
+    -->
+
+    <div class="snackbar-container">
+      <!-- <div class="snackbar flex flex-between flex-center-y pd-inline-16">
+        <p class="body-medium">Added to Recipe book</p>
+      </div> -->
+    </div>
+  </body>
+</html>

@@ -166,6 +166,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30%;
+  overflow: hidden;
 }
 
 a[data-show-more-link] {
@@ -423,6 +424,11 @@ a[data-show-more-link]:where(:hover, :focus-visible) {
 
 .detail-page .saved .unsave-text,
 .detail-page .removed .save-text {
+  display: block;
+}
+
+.detail-page .saved .save-text,
+.detail-page .removed .unsave-text {
   display: none;
 }
 
@@ -479,7 +485,7 @@ a[data-show-more-link]:where(:hover, :focus-visible) {
   list-style-position: inside;
 }
 
-.detail-banner-skeleoton {
+.detail-banner-skeleton {
   aspect-ratio: 1/1;
 }
 
@@ -491,4 +497,17 @@ a[data-show-more-link]:where(:hover, :focus-visible) {
 .detail-content-skeleton .text-skeleton {
   height: 14px;
   width: 80%;
+}
+
+.detail-content-skeleton .filter-chip-skeleton {
+  width: 80px;
+}
+
+/* Saved recoies*/
+.saved-recipe-page {
+  padding-block-end: 24px;
+}
+
+.saved-recipe-page .section-title {
+  line-height: 40px;
 }

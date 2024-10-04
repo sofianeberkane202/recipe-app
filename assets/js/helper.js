@@ -18,6 +18,7 @@ export const getTime = function (minutes) {
 export const fetchDataJson = async function (url) {
   try {
     const response = await fetch(url);
+
     if (!response.ok) return;
     const data = await response.json();
     return data;
@@ -25,21 +26,39 @@ export const fetchDataJson = async function (url) {
 };
 
 export const generateUrl = function (queries, ACCESS_POINT_API = ACCESS_POINT) {
-  const query = queries
-    ?.join("&")
-    .replace(/,/g, "=")
-    .replace(/ /g, "%20")
-    .replace(/\+/g, "%2B");
+  let query, url;
+  if (Array.isArray(queries)) {
+    query = queries
+      ?.join("&")
+      .replace(/,/g, "=")
+      .replace(/ /g, "%20")
+      .replace(/\+/g, "%2B");
 
-  const url = `${ACCESS_POINT_API}?app_id=${APP_ID}&app_key=${API_KEY}&type=${TYPE}${
-    query ? `&${query}` : ""
-  }`;
+    url = `${ACCESS_POINT_API}?app_id=${APP_ID}&app_key=${API_KEY}&type=${TYPE}${
+      query ? `&${query}` : ""
+    }`;
+    return url;
+  }
 
+  url = `${ACCESS_POINT_API}/${queries}?app_id=${APP_ID}&app_key=${API_KEY}&type=${TYPE}`;
   return url;
 };
 
 export const generateStateData = function (data) {
-  return data.hits.map((recipeInfo) => {
+  if (!Array.isArray(data)) {
+    const recipe = data.recipe;
+    const { time, timeUnit } = getTime(recipe.totalTime);
+    return {
+      image: recipe.image,
+      title: recipe.label,
+      cookingTime: {
+        time,
+        unit: timeUnit,
+      },
+      recipeId: recipe.uri.slice(recipe.uri.lastIndexOf("_") + 1),
+    };
+  }
+  return data.map((recipeInfo) => {
     const { recipe } = recipeInfo;
     const { time, timeUnit } = getTime(recipe.totalTime);
 

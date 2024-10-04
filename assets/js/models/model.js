@@ -3,10 +3,11 @@ import { cardQueries, cuisinType } from "../config";
 import * as helper from "../helper";
 export const state = {
   theme: "",
-  data: "",
+  data: [],
   sliderData: new Map(),
   recipeSavedData: new Set(),
   nextPageURL: "",
+  recipeData: {},
 };
 
 export const getCurrentTheme = function () {
@@ -25,11 +26,11 @@ export const updateTheme = function (newTheme) {
 
 const getData = async function (url) {
   const data = await helper.fetchDataJson(url);
-  console.log(data);
 
   state.nextPageURL = data._links?.next?.href;
+  // console.log(data);
 
-  state.data = helper.generateStateData(data);
+  state.data = helper.generateStateData(data?.hits || data);
 };
 
 export const fetchData = async function (queries) {
@@ -87,9 +88,10 @@ export const fetchSliderData = async function (/*queries*/) {
       const url = helper.generateUrl(queries);
 
       const data = await helper.fetchDataJson(url);
+
       state.sliderData.set(
         queries.at(-1).at(-1),
-        helper.generateStateData(data)
+        helper.generateStateData(data.hits)
       );
     }
   } catch (error) {
@@ -97,17 +99,48 @@ export const fetchSliderData = async function (/*queries*/) {
   }
 };
 
-// fetchSliderData([...cardQueries, ["cuisineType", "American"]]);
+// -------------------------------- featch data for Detail page ------------------
+export const fetchDetailRecipeData = async function (recipeId) {
+  const url = helper.generateUrl(recipeId);
+  const data = await helper.fetchDataJson(url);
+  const {
+    images: { LARGE, REGULAR, SMALL, THUMBNAIL },
+    label: title,
+    source: author,
+    ingredients = [],
+    totalTime: cookingTime = 0,
+    calories = 0,
+    cuisinType = [],
+    dietLabels = [],
+    dishType = [],
+    yield: servings = 0,
+    ingredientLines = [],
+    uri,
+  } = data.recipe;
 
-// -----------------------
-// Reacipes page
-// -----------------------
+  const banner = LARGE ?? REGULAR ?? SMALL ?? THUMBNAIL;
+  // const { url: bannerUrl, width, height } = banner;
 
-// --------------------- Get data for rendring them on recipe page
+  state.recipeData = {
+    banner,
+    cuisinType,
+    dietLabels,
+    dishType,
+    title,
+    author,
+    ingredients,
+    cookingTime,
+    calories,
+    servings,
+    ingredientLines,
+    uri,
+    recipeId: uri.slice(uri.lastIndexOf("_") + 1),
+  };
+};
 
-// export const getrecipeFilteredData = async function (queries) {
-//   try {
-//     console.log("model", queries);
-
-//   } catch (error) {}
+// export const getSavedRecipeces = async function (recipeId) {
+//   const url = helper.generateUrl(recipeId);
+//   const data = await helper.fetchDataJson(url);
+//   console.log(data);
+//   state.recipeData = helper.generateStateData(data.recipe);
 // };

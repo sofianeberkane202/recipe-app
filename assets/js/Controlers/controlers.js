@@ -55,14 +55,12 @@ class Controller extends ControllerBase {
     tabView.addHandlerTabKey();
     tabView.addHandlerTabContent(this.controllerTabData);
     tabView.addHandlerLoadRecipes(this.controllerTabData);
-    tabView.addHandlerDetailRecipe();
     tabView.addHandlerSaveRecipe(this.cotrollerSaveRecipe);
 
     tagView.addHandlerWindowLocation();
 
     sliderView.addHandlerSlider(this.controllerSlider);
     sliderView.addHandlerSaveRecipe(this.cotrollerSaveRecipe);
-    sliderView.addHandlerDetailRecipe();
   }
 }
 
