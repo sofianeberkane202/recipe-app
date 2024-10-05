@@ -6,6 +6,7 @@ export class View {
     parentElement = this.parentElement,
     isClear = true
   ) {
+    console.log(parentElement);
     this.data = data;
     this.savedRecipes = savedRecipes;
     const markup = this._generateMarkup();
@@ -83,17 +84,6 @@ export class View {
       // e.preventDefault();
       const $btnIconSave = e.target.closest("[data-tab-recipe-save-btn]");
       if (!$btnIconSave) return;
-      let recipeData;
-
-      if ($btnIconSave?.closest(".slider")?.hasAttribute("cuisinetype")) {
-        const cuisineType = $btnIconSave
-          .closest(".slider")
-          .getAttribute("cuisinetype");
-        recipeData = this.data.get(cuisineType);
-      } else {
-        console.log("enter dtaa");
-        recipeData = this.data;
-      }
 
       const cardId = $btnIconSave.closest(".card").dataset.id;
 
@@ -104,7 +94,6 @@ export class View {
       const stateOfSave = $btnIconSave.classList.contains("saved")
         ? "saved"
         : "removed";
-      // console.log(stateOfSave);
       global.showNotification(stateOfSave);
     });
   }

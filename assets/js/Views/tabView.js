@@ -15,6 +15,22 @@ class TabView extends View {
     this.lastActiveTabBtn = this.#tabBtns[0];
   }
 
+  render(data, savedRecipes) {
+    this.#createAndSetGridList();
+
+    super.render(
+      data,
+      savedRecipes,
+      this.#lastActiveTabPanel.querySelector(".grid-list")
+    );
+  }
+
+  renderSkeleton() {
+    this.#createAndSetGridList();
+
+    super.renderSkeleton(this.#lastActiveTabPanel.querySelector(".grid-list"));
+  }
+
   renderLink() {
     this.#lastActiveTabPanel.querySelector("[data-show-more-link]")
       ? ""
@@ -25,6 +41,16 @@ class TabView extends View {
       Show more
     </a>
     `);
+  }
+
+  #createAndSetGridList() {
+    const $grid_list = document.createElement("div");
+
+    $grid_list.classList.add("grid-list", "grid");
+
+    this.clear();
+
+    this.parentElement.insertAdjacentElement("beforeEnd", $grid_list);
   }
 
   #updateTabBtnAndPanelUI($currentPanel, $currentTabBtn) {
@@ -83,14 +109,14 @@ class TabView extends View {
     return queries;
   }
 
-  addHandlerLoadRecipes(handler) {
+  async addHandlerLoadRecipes(handler) {
     window.addEventListener("load", () => {
       const queries = this.#generateQuery();
       handler(queries);
     });
   }
 
-  addHandlerTabContent(handler) {
+  async addHandlerTabContent(handler) {
     this.#parentElement.addEventListener("click", (e) => {
       const $btnTab = e.target.closest("[data-tab-btn]");
       if (!$btnTab) return;
@@ -100,20 +126,19 @@ class TabView extends View {
   }
 
   // addHandlerSaveRecipe(handler) {
+  //   console.log(this.parentElement);
   //   this.#parentElement.addEventListener("click", (e) => {
   //     e.preventDefault();
   //     const $btnIconSave = e.target.closest("[data-tab-recipe-save-btn]");
   //     if (!$btnIconSave) return;
 
-  //     const recipeId = +$btnIconSave.closest(".card").dataset.id;
+  //     const recipeId = $btnIconSave.closest(".card").dataset.id;
   //     // console.log(this.data[recipeId]);
-  //     handler(this.data[recipeId].recipeId);
+  //     handler(recipeId);
   //     $btnIconSave.classList.toggle("saved");
   //     $btnIconSave.classList.toggle("removed");
   //   });
   // }
-
-  // setters getter
 
   get lastActiveTabBtn() {
     return this.#lastActiveTabBtn;
@@ -144,7 +169,7 @@ class TabView extends View {
   }
 
   get parentElement() {
-    return this.#lastActiveTabPanel.querySelector(".grid-list");
+    return this.#lastActiveTabPanel;
   }
 
   set parentElement(parentElement) {
