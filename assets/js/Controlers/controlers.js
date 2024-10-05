@@ -41,6 +41,7 @@ class Controller extends ControllerBase {
       await model.fetchData(queries);
       model.fetchRecipeSavedData();
       tabView.render(model.state.data, model.state.recipeSavedData);
+      tabView.renderLink();
     } catch (error) {}
   }
 
