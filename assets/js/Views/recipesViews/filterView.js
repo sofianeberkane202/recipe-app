@@ -41,10 +41,8 @@ class FilterView extends View {
   }
 
   renderSkeleton() {
-    const markup = `${this.generateSkeletonMarkup().repeat(20)}`;
     const $gridList = this.#parentElement.querySelector("[data-grid-list]");
-    $gridList.innrHTML = "";
-    $gridList.insertAdjacentHTML("afterbegin", markup);
+    super.renderSkeleton($gridList);
   }
 
   #updateFilterCount() {

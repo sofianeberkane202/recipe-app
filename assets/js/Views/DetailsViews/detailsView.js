@@ -1,5 +1,6 @@
-class DetailsView {
-  #parentEelement = document.querySelector("[data-detail-container]");
+import { View } from "../View.js";
+class DetailsView extends View {
+  #parentElement = document.querySelector("[data-detail-container]");
   #data;
   #saveRecipes;
 
@@ -8,7 +9,7 @@ class DetailsView {
     this.#saveRecipes = saveRecipes;
     const markup = this._generateMarkup();
     this.clear();
-    this.#parentEelement.insertAdjacentHTML("afterbegin", markup);
+    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   _generateMarkup() {
@@ -111,13 +112,7 @@ class DetailsView {
       .join("");
   }
 
-  renderSkeletonDetails() {
-    const markup = this._generateSkeletonMarkup();
-    this.clear();
-    this.#parentEelement.insertAdjacentHTML("afterbegin", markup);
-  }
-
-  _generateSkeletonMarkup() {
+  generateSkeletonMarkup() {
     return `
       <div class="detail-banner detail-banner-skeleton skeleton skeleton-card"></div>
       <div class="detail-content detail-content-skeleton skeleton-card">
@@ -174,8 +169,8 @@ class DetailsView {
     });
   }
 
-  clear() {
-    this.#parentEelement.innerHTML = "";
+  get parentElement() {
+    return this.#parentElement;
   }
 }
 

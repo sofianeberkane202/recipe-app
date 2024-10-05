@@ -33,10 +33,12 @@ class TabView extends View {
   renderSkeleton() {
     const /** {NodeElement} */ $gridList = document.createElement("div");
     $gridList.classList.add("grid-list", "grid");
-    $gridList.innerHTML = `${this.generateSkeletonMarkup().repeat(20)}`;
-    this.lastActiveTabPanel.innerHTML = "";
+
+    this.clear(this.#lastActiveTabPanel);
 
     this.lastActiveTabPanel.insertAdjacentElement("afterbegin", $gridList);
+
+    super.renderSkeleton(this.#lastActiveTabPanel.querySelector(".grid-list"));
   }
 
   #generateMurkup() {
@@ -56,6 +58,7 @@ class TabView extends View {
   }
 
   #updateTabBtnAndPanelUI($currentPanel, $currentTabBtn) {
+    // update Tab Buttons :
     this.lastActiveTabBtn.setAttribute("aria-selected", false);
     this.lastActiveTabBtn.setAttribute("tabindex", -1);
     $currentTabBtn.setAttribute("aria-selected", true);

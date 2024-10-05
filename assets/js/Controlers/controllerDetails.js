@@ -10,7 +10,7 @@ class ControllerDtails extends ControllerBase {
 
   async controllerGetData(recipeId) {
     try {
-      detailsView.renderSkeletonDetails();
+      detailsView.renderSkeleton();
       await model.fetchDetailRecipeData(recipeId);
       await model.fetchRecipeSavedData();
       detailsView.render(model.state.recipeData, model.state.recipeSavedData);

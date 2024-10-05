@@ -18,6 +18,12 @@ export class View {
     `;
   }
 
+  renderSkeleton(parentElement = this.parentElement) {
+    const markup = `${this.generateSkeletonMarkup().repeat(20)}`;
+    this.clear(parentElement);
+    parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
   // renderSkeleton($parentElement) {
   //   $parentElement.innerHTML = `${this.generateSkeletonMarkup().repeat(20)}`;
   //   this.lastActiveTabPanel.innerHTML = "";
