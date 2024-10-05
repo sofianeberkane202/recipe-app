@@ -13,6 +13,20 @@ export class View {
     parentElement.insertAdjacentHTML("beforeend", markup);
   }
 
+  _generateMarkup() {
+    return this.data
+      .map((recipe, i) => {
+        return `${this.generateCard(recipe, i)}`;
+      })
+      .join("");
+  }
+
+  renderSkeleton(parentElement = this.parentElement) {
+    const markup = `${this.generateSkeletonMarkup().repeat(20)}`;
+    this.clear(parentElement);
+    parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
   generateSkeletonMarkup() {
     return `
     <div class="skeleton-card flex flex-column">
@@ -25,15 +39,7 @@ export class View {
     `;
   }
 
-  renderSkeleton(parentElement = this.parentElement) {
-    const markup = `${this.generateSkeletonMarkup().repeat(20)}`;
-    this.clear(parentElement);
-    parentElement.insertAdjacentHTML("afterbegin", markup);
-  }
-
-  generateCard(recipe, i, typeOfCuisin = "") {
-    // if (typeOfCuisin !== "")
-    //   console.log(typeOfCuisin, recipe, this.savedRecipes);
+  generateCard(recipe, i) {
     const { time, unit } = recipe.cookingTime;
     return `
       <div class="card flex flex-column" style="--animation-delay:${
