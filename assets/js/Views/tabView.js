@@ -15,46 +15,16 @@ class TabView extends View {
     this.lastActiveTabBtn = this.#tabBtns[0];
   }
 
-  render(data, savedResipes) {
-    this.data = data;
-    this.savedRecipes = savedResipes;
-    const markup = this.#generateMurkup();
-
-    this.lastActiveTabPanel.insertAdjacentElement("afterbegin", markup);
-    this.lastActiveTabPanel.innerHTML += `
+  renderLink() {
+    this.#lastActiveTabPanel.querySelector("[data-show-more-link]")
+      ? ""
+      : (this.lastActiveTabPanel.innerHTML += `
     <a href="/recipes.html?mealType=${this.#lastActiveTabBtn.textContent
       .trim()
-      .toLowerCase()}" class="title-small text-center pd-block-12 radius-4" data-show-more-link="">
+      .toLowerCase()}" class="title-small text-center pd-block-12 radius-4" data-show-more-link>
       Show more
     </a>
-    `;
-  }
-
-  renderSkeleton() {
-    const /** {NodeElement} */ $gridList = document.createElement("div");
-    $gridList.classList.add("grid-list", "grid");
-
-    this.clear(this.#lastActiveTabPanel);
-
-    this.lastActiveTabPanel.insertAdjacentElement("afterbegin", $gridList);
-
-    super.renderSkeleton(this.#lastActiveTabPanel.querySelector(".grid-list"));
-  }
-
-  #generateMurkup() {
-    const /** {NodeElement} */ $gridList = document.createElement("div");
-    $gridList.classList.add("grid-list", "grid");
-
-    // clear lastActivePanel
-    this.lastActiveTabPanel.innerHTML = "";
-    const cards = this.data
-      .map((recipe, i) => {
-        return this.generateCard(recipe, i);
-      })
-      .join("");
-
-    $gridList.insertAdjacentHTML("afterbegin", cards);
-    return $gridList;
+    `);
   }
 
   #updateTabBtnAndPanelUI($currentPanel, $currentTabBtn) {
@@ -174,7 +144,7 @@ class TabView extends View {
   }
 
   get parentElement() {
-    return this.#parentElement;
+    return this.#lastActiveTabPanel.querySelector(".grid-list");
   }
 
   set parentElement(parentElement) {
