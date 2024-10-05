@@ -2,15 +2,7 @@ import { View } from "../View.js";
 class DetailsView extends View {
   #parentElement = document.querySelector("[data-detail-container]");
   #data;
-  #saveRecipes;
-
-  render(data, saveRecipes) {
-    this.#data = data;
-    this.#saveRecipes = saveRecipes;
-    const markup = this._generateMarkup();
-    this.clear();
-    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
-  }
+  #savedRecipes;
 
   _generateMarkup() {
     return `
@@ -25,7 +17,7 @@ class DetailsView extends View {
           <h1 class="display-small">${this.#data.title}</h1>
 
           <button class="btn btn-secondary has-state has-icon flex ${
-            this.#saveRecipes.has(this.#data.recipeId) ? "saved" : "removed"
+            this.#savedRecipes.has(this.#data.recipeId) ? "saved" : "removed"
           }">
             <span class="material-symbols-outlined bookmark-add" aria-hidden="true">bookmark_add</span>
             <span class="material-symbols-outlined bookmark" aria-hidden="true">bookmark</span>
@@ -171,6 +163,20 @@ class DetailsView extends View {
 
   get parentElement() {
     return this.#parentElement;
+  }
+
+  get data() {
+    return this.#data;
+  }
+  set data(data) {
+    this.#data = data;
+  }
+
+  get savedRecipes() {
+    this.#savedRecipes;
+  }
+  set savedRecipes(saveRecipes) {
+    this.#savedRecipes = saveRecipes;
   }
 }
 
