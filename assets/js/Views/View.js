@@ -21,8 +21,8 @@ export class View {
       .join("");
   }
 
-  renderSkeleton(parentElement = this.parentElement) {
-    const markup = `${this.generateSkeletonMarkup().repeat(20)}`;
+  renderSkeleton(parentElement = this.parentElement, numberOfSkeletons = 20) {
+    const markup = `${this.generateSkeletonMarkup().repeat(numberOfSkeletons)}`;
     this.clear(parentElement);
     parentElement.insertAdjacentHTML("afterbegin", markup);
   }
