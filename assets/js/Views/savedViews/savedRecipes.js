@@ -8,16 +8,6 @@ class SavedRecipes extends View {
     super();
   }
 
-  render(data, savedRecipes) {
-    this.#data = data;
-    this.#savedRecipes = savedRecipes;
-    console.log(this.#data);
-    const parentElement = this.#parentElement.querySelector(".grid-list");
-    const markup = this.generateCard(this.#data, SavedRecipes.#i);
-    parentElement.insertAdjacentHTML("beforeend", markup);
-    SavedRecipes.#i += 1;
-  }
-
   addHandlerLoadSavedRecipes(handler) {
     window.addEventListener("load", handler);
   }
@@ -25,11 +15,19 @@ class SavedRecipes extends View {
   get data() {
     return this.#data;
   }
+  set data(data) {
+    this.#data = data;
+  }
+
   get savedRecipes() {
     return this.#savedRecipes;
   }
+  set savedRecipes(savedRecipes) {
+    this.#savedRecipes = savedRecipes;
+  }
+
   get parentElement() {
-    return this.#parentElement;
+    return this.#parentElement.querySelector(".grid-list");
   }
 }
 
