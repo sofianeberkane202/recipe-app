@@ -1,5 +1,6 @@
 import * as global from "../global";
-class HeaderView {
+import { View } from "./View";
+class HeaderView extends View {
   #parentElement = document.querySelector(".header");
 
   addHandlerSwitchTheme(handler) {

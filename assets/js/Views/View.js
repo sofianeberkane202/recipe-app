@@ -97,6 +97,10 @@ export class View {
     });
   }
 
+  addHandlerLoadTheme(handler) {
+    window.addEventListener("load", handler);
+  }
+
   clear(parentElement = this.parentElement) {
     parentElement.innerHTML = "";
   }

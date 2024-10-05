@@ -27,6 +27,12 @@ class Controller extends ControllerBase {
 
   // -----------------------------------------------
 
+  constructor() {
+    super();
+    this.initBase();
+    this.init();
+  }
+
   controllerSearchField() {}
 
   async controllerTabData(queries) {
@@ -47,8 +53,6 @@ class Controller extends ControllerBase {
   }
 
   init() {
-    this.initBase();
-
     heroView.addHandlerSearchField();
 
     tabView.addHandlerTab();
@@ -64,5 +68,4 @@ class Controller extends ControllerBase {
   }
 }
 
-const controller = new Controller();
-controller.init();
+new Controller();

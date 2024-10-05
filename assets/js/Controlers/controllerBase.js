@@ -22,10 +22,6 @@ export class ControllerBase {
     global.updateThemeUI(model.state.theme);
   }
 
-  addHandlerLoadTheme(handler) {
-    window.addEventListener("load", handler);
-  }
-
   async cotrollerSaveRecipe(recipeId) {
     try {
       await model.saveRecipeInLocalStorage(recipeId);
@@ -35,6 +31,6 @@ export class ControllerBase {
   initBase() {
     headerView.addHandlerSwitchTheme(this.controlerSwitchTheme);
 
-    this.addHandlerLoadTheme(this.controlerLoadingSwitchTheme);
+    headerView.addHandlerLoadTheme(this.controlerLoadingSwitchTheme);
   }
 }
