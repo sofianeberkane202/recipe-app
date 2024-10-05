@@ -1,9 +1,16 @@
 import * as global from "../global";
 export class View {
-  render(parentElement) {
+  render(
+    data,
+    savedRecipes,
+    parentElement = this.parentElement,
+    isClear = true
+  ) {
+    this.data = data;
+    this.savedRecipes = savedRecipes;
     const markup = this._generateMarkup();
-    this.clear(parentElement);
-    parentElement.insertAdjacentHTML("afterbegin", markup);
+    isClear && this.clear(parentElement);
+    parentElement.insertAdjacentHTML("beforeend", markup);
   }
 
   generateSkeletonMarkup() {
@@ -23,13 +30,6 @@ export class View {
     this.clear(parentElement);
     parentElement.insertAdjacentHTML("afterbegin", markup);
   }
-
-  // renderSkeleton($parentElement) {
-  //   $parentElement.innerHTML = `${this.generateSkeletonMarkup().repeat(20)}`;
-  //   this.lastActiveTabPanel.innerHTML = "";
-
-  //   this.lastActiveTabPanel.insertAdjacentElement("afterbegin", $gridList);
-  // }
 
   generateCard(recipe, i, typeOfCuisin = "") {
     // if (typeOfCuisin !== "")
