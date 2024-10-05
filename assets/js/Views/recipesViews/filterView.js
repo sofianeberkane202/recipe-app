@@ -11,31 +11,10 @@ class FilterView extends View {
   #data;
   #savedRecipes;
 
-  // renderNextPage(data, savedRecipes) {
-  //   this.data = data;
-  //   this.savedRecipes = savedRecipes;
-  //   const markup = this._generateMarkup();
-  //   const parentElement = this.#parentElement.querySelector(".grid-list");
-  //   parentElement.insertAdjacentHTML("beforeend", markup);
-  // }
-
   renderNoLoadMessage() {
     const markup = `<p class="body-medium">No more load</p>`;
     const $noMoreLoad = this.#parentElement.querySelector(".load-more");
     $noMoreLoad.insertAdjacentHTML("beforeend", markup);
-  }
-
-  _generateMarkup() {
-    return this.data
-      .map((recipe, i) => {
-        return `${this.generateCard(recipe, i)}`;
-      })
-      .join("");
-  }
-
-  renderSkeleton() {
-    const $gridList = this.#parentElement.querySelector("[data-grid-list]");
-    super.renderSkeleton($gridList);
   }
 
   #updateFilterCount() {
@@ -215,7 +194,7 @@ class FilterView extends View {
   }
 
   get parentElement() {
-    return this.#parentElement.querySelector(".grid-list");
+    return this.#parentElement.querySelector("[data-grid-list]");
   }
 }
 
