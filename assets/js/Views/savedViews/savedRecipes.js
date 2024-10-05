@@ -7,9 +7,11 @@ class SavedRecipes extends View {
   constructor() {
     super();
   }
+
   render(data, savedRecipes) {
     this.#data = data;
     this.#savedRecipes = savedRecipes;
+    console.log(this.#data);
     const parentElement = this.#parentElement.querySelector(".grid-list");
     const markup = this.generateCard(this.#data, SavedRecipes.#i);
     parentElement.insertAdjacentHTML("beforeend", markup);
