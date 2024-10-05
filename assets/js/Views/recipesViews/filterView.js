@@ -11,20 +11,13 @@ class FilterView extends View {
   #data;
   #savedRecipes;
 
-  renderFilter(data, savedRecipes) {
-    this.data = data;
-    this.savedRecipes = savedRecipes;
-    const parentElement = this.#parentElement.querySelector(".grid-list");
-    this.render(parentElement);
-  }
-
-  renderNextPage(data, savedRecipes) {
-    this.data = data;
-    this.savedRecipes = savedRecipes;
-    const markup = this._generateMarkup();
-    const parentElement = this.#parentElement.querySelector(".grid-list");
-    parentElement.insertAdjacentHTML("beforeend", markup);
-  }
+  // renderNextPage(data, savedRecipes) {
+  //   this.data = data;
+  //   this.savedRecipes = savedRecipes;
+  //   const markup = this._generateMarkup();
+  //   const parentElement = this.#parentElement.querySelector(".grid-list");
+  //   parentElement.insertAdjacentHTML("beforeend", markup);
+  // }
 
   renderNoLoadMessage() {
     const markup = `<p class="body-medium">No more load</p>`;
@@ -222,10 +215,7 @@ class FilterView extends View {
   }
 
   get parentElement() {
-    return this.#parentElement;
-  }
-  set parentElement(parentElement) {
-    this.parentElement = parentElement;
+    return this.#parentElement.querySelector(".grid-list");
   }
 }
 

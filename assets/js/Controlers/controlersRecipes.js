@@ -17,21 +17,26 @@ class ControllerRecipes extends ControllerBase {
       await model.fetchData(queries);
       model.fetchRecipeSavedData();
 
-      filterView.renderFilter(model.state.data, model.state.recipeSavedData);
+      filterView.render(model.state.data, model.state.recipeSavedData);
     } catch (error) {}
   }
 
   async controllerLoadMoreRecipes() {
     try {
       const isNextPageExist = await model.fetchNextPageData();
-      console.log(model.state.data);
+      // console.log(model.state.data);
       // if (!isNextPageExist) {
       //   filterView.renderNoLoadMessage();
       //   return;
       // }
       await model.fetchRecipeSavedData();
 
-      filterView.renderNextPage(model.state.data, model.state.recipeSavedData);
+      filterView.render(
+        model.state.data,
+        model.state.recipeSavedData,
+        undefined,
+        false
+      );
     } catch (error) {}
   }
 
